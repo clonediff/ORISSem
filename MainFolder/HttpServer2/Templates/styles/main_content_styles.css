@@ -1,0 +1,342 @@
+.main_content{
+    margin: 0 auto;
+    padding: 0px 8px;
+    /* width: 100%; */
+    background: radial-gradient(rgba(24, 26, 33, 0) 0%, #181A21 100%) fixed no-repeat, 
+            url(https://store.cloudflare.steamstatic.com/public/shared/images/joinsteam/new_login_bg_strong_mask.jpg) center top no-repeat, #181A21;
+}
+
+.login_div{
+    padding-top: 80px;
+    padding-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login_window_div{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+}
+
+.login_label{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 16px;
+    color: #fff;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: .055em;
+    font-weight: 200;
+}
+
+.login_form_div{
+    background-color: #181a21;
+    border-radius: 4px;
+    padding: 24px 32px;
+    flex: 1;
+    min-width: 636px;
+}
+
+.inner_login_form_div{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.login_form{
+    flex: 1;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr;
+}
+
+.field_div{
+    display: grid;
+    grid-template-areas:
+        "label hint"
+        "input input";
+    grid-template-columns: 1fr min-content;
+    gap: 2px;
+}
+
+.field_label{
+    font-size: 12px;
+    color: #afafaf;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    user-select: none;
+}
+
+.nickname_field_label{
+    color: #1999ff;
+    font-weight: 500;
+}
+
+.input_field{
+    border-radius: 2px;
+    color: #fff;
+    padding: 10px;
+    background-color: #32353c;
+    outline: none;
+    font-size: 15px;
+    grid-area: input;
+    border: 1px solid #32353c;
+}
+
+.remember_me_div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox_outer_div{
+    width: 14px;
+    height: 14px;
+    padding: 3px;
+    border-radius: 2px;
+    background-color: #32353c;
+    cursor: pointer;
+}
+
+.checkbox_inner_div{
+    width: 100%;
+    height: 100%;
+}
+
+.check_mark{
+    stroke-width: 35;
+    stroke: rgb(255, 255, 255);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    fill: #fff;
+    overflow: visible;
+    width: 100%;
+    height: 100%;
+    max-width: 320px;
+    max-height: 320px;
+}
+
+.check_mark:focus{
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.remember_me_label{
+    color: #afafaf;
+    font-size: 12px;
+    user-select: none;
+    padding-left: 6px;
+}
+
+.login_btn_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login_btn{
+    position: relative;
+    background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: inherit;
+    text-align: center;
+    letter-spacing: .03em;
+    cursor: pointer;
+    width: 270px;
+}
+
+.form_error_div{
+    color: #c15755;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.help_to_login_link{
+    color: #afafaf;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+}
+
+.beta_function_outer_div{
+    flex: 0;
+    display: grid;
+    gap: 4px;
+    margin-left: 24px;
+}
+
+.beta_function_inner_div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+}
+
+.beta_functions_label{
+    color: #1999ff;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 6px 0px;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+}
+
+.beta_function_describtion_div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 0px;
+}
+
+.beta_svg{
+    width: 120px;
+    fill: #afafaf;
+    height: 52;
+}
+
+.beta_functions_describtion_text{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #afafaf;
+    margin: 8px;
+}
+
+.more_link{
+    background-color: rgba(255,255,255,.1);
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    padding: 8px 16px;
+}
+
+.show_qr_link{
+    text-align: center;
+    text-decoration-line: underline;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    color: #afafaf;
+    padding: 12px 0px;
+    cursor: pointer;
+}
+
+.login_bottom_row{
+    display: flex;
+    flex-direction: row;
+    padding-top: 48px;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    justify-content: center;
+    background-color: #181A21;
+}
+
+.bottom_row_item{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 200px;
+}
+
+.subtext{
+    font-size: 14px;
+    color: #b8b6b4;
+}
+
+.join_us{
+    margin-top: 10px;
+    color: #FFFFFF;
+    max-width: 60%;
+    text-align: center;
+    font-size: 14px;
+}
+
+.join_image{
+    width: 320px;
+}
+
+.join_us_btn_div{
+    margin-top: 20px;
+}
+
+.join_us_btn{
+    border-radius: 2px;
+    border: none;
+    padding: 1px;
+    cursor: pointer;
+    text-decoration: none !important;
+    color: #fff !important;
+    background: transparent;
+    margin: 20px 0 10px 0;
+    display: block;
+    text-align: center;
+}
+
+.join_us_btn > span{
+    display: block;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 2px;
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.login_form input:hover{
+    background-color: #393c44;
+}
+
+.remember_me_div:hover .checkbox_outer_div{
+    background-color: #393c44;
+}
+
+.checkbox_outer_div:hover{
+    background-color: #393c44;
+}
+
+.help_to_login_link:hover{
+    color: #c9c9c9;
+}
+
+.login_btn:hover{
+    background: linear-gradient(90deg, #06BFFF 30%, #2D73FF 100%);
+}
+
+.join_us:hover{
+    text-decoration: none;
+    color: #66c0f4;
+}
+
+.join_us_btn:hover{
+    text-decoration: none !important;
+    color: #fff !important;
+    background: transparent;
+}
+
+.join_us_btn:hover > span {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,1);
+    border-radius: 2px;
+}

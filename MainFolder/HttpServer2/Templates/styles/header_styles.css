@@ -1,0 +1,176 @@
+.global_header{
+    padding-left: 16px;
+    padding-right: 16px;
+    background: #171a21;
+    background-position: center top;
+    min-width: 940px;
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.content{
+    background: #171a21;
+    position: relative;
+    width: 940px;
+    height: 104px;
+    margin: 0px auto;
+    z-index: 402;
+}
+
+.logo{
+    float: left;
+    padding-top: 30px;
+    margin-right: 40px;
+    width: 176px;
+    height: 44px;
+}
+
+.menuitem {
+    display: block;
+    position: relative;
+    padding-top: 45px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 7px;
+    line-height: 16px;
+    float: left;
+    font-size: 14px;
+    color: #b8b6b4;
+    text-transform: uppercase;
+}
+
+.menuitem:hover{
+    color: #ffffff;
+}
+
+.navigation_container{
+    position: absolute;
+    left: 200px;
+}
+
+.global_actions{
+    position: absolute;
+    right: 0px;
+    top: 6px;
+    height: 21px;
+    line-height: 21px;
+    color: #b8b6b4;
+    font-size: 11px;
+    z-index: 401;
+}
+
+.global_action_menu{
+    line-height: 24px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.install_btn{
+    display: inline-block;
+    position: relative;
+    height: 21px;
+    line-height: 24px;
+    margin-right: 3px;
+    vertical-align: top;
+}
+
+.install_btn_content{
+    display: inline-block;
+    padding-left: 35px;
+    padding-right: 9px;
+    background-position: 10px 5px;
+    background-image: url(https://store.cloudflare.steamstatic.com/public/shared/images/header/btn_header_installsteam_download.png?v=1);
+    background-repeat: no-repeat;
+    text-decoration: none;
+    color: #e5e4dc;
+    font-weight: normal;
+    background-color: #5c7e10;
+}
+
+.sign_in_btn{
+    vertical-align: top;
+    padding: 0 4px;
+    color: #b8b6b4;
+}
+
+.language_btn{
+    padding-right: 18px;
+    background-image: url(https://store.cloudflare.steamstatic.com/public/shared/images/popups/btn_arrow_down_padded.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-right: 5px;
+    vertical-align: top;
+    display: inline-block;
+    padding-left: 4px;
+    line-height: 25px;
+}
+
+.community_navigation{
+    max-width: 132px;
+    padding: 5px 15px 10px 15px;
+    box-shadow: 3px 3px 5px -3px #000;
+    text-align: left;
+    background: #171a21;
+    position: absolute;
+    left: 80.4688px;
+    top: 64px;
+    display: none;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.submenuitem{
+    display: block;
+    padding: 6px 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #b8b6b4;
+    padding-right: 10px;
+}
+
+.submenuitem:hover{
+    color: #ffffff;
+}
+
+.community_hoverer:hover + .community_navigation{
+    display: block;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.community_navigation:hover{
+    display: block;
+    opacity: 1;
+}
+
+.store_navigation{
+    max-width: 132px;
+    padding: 5px 15px 10px 15px;
+    box-shadow: 3px 3px 5px -3px #000;
+    text-align: left;
+    background: #171a21;
+    position: absolute;
+    left: 1px;
+    top: 64px;
+    display: none;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.store_hoverer:hover + .store_navigation{
+    opacity: 1;
+    display: block;
+    transition: 0.3s;
+}
+
+.white_hover:hover{
+    color: #ffffff;
+}
+
+.store_navigation:hover{
+    display: block;
+    opacity: 1;
+}
