@@ -1,67 +1,179 @@
-html{
-    height: 100%;
-}
-
-*{
-    padding: 0;
-    margin: 0;
-}
-
-::-webkit-scrollbar {
-    height: 12px;
-    width: 14px;
-    background: transparent;
-    z-index: 12;
-    overflow: visible;
-}
-
-::-webkit-scrollbar-corner {
-    background: #202020;
-}
-
-::-webkit-scrollbar-thumb {
-    width: 10px;
-    background-color: #434953;
-    border-radius: 10px;
-    z-index: 12;
-    border: 4px solid rgba(0,0,0,0);
-    background-clip: padding-box;
-    transition: background-color .32s ease-in-out;
-    margin: 4px;
-    min-height: 32px;
-    min-width: 32px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:#4e5157
-}
-
-::selection {
-    background: #54a5d4;
-    text-shadow: 1px 1px 2px #000000aa;
-    color: #fff;
-}
-
-body{
-    background: #1b2838;
-    min-height: 100%;
-}
-
-body{
-    font-size: 12px;
-    height: auto;
-    position: relative;
-    color: #E9E9E9;
-    background-color: #181A21;
-    font-family: "Motiva Sans", Sans-serif;
-    font-weight: normal;
+* {
+    box-sizing: border-box;
 }
 
 a {
     text-decoration: none;
-    color: #ffffff;
 }
 
-img{
-    -webkit-user-drag: none;
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: "Segoe UI",Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+.title {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 2rem;
+}
+
+.input_div {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.form_div {
+    height: 100%;
+    width: 100%;
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.submit_btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    width: 100%;
+    background-color: #0e1c36;
+    color: #fff;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+.card_body {
+    background-color: #ebf2fa;
+    padding: 3rem !important;
+}
+
+.form_input {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.link_div {
+    margin-top: 1rem;
+}
+
+.link {
+    font-weight: 700;
+}
+
+.show_password_icon {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    height: 24px;
+    width: 24px;
+    background: url('../images/show_password.svg') 0 0 no-repeat;
+}
+
+.show_password_icon.hide {
+    background: url('../images/hide_password.svg') 0 0 no-repeat;
+}
+
+.header {
+    top: 0;
+    background: #545454;
+    padding: 19px;
+    position: sticky;
+    z-index: 15;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.main_content {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 10%;
+    background: #fff;
+    width: 80%;
+    height: 90%;
+    padding: 5px 30px;
+}
+
+.main_content .nothing {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.post {
+    border: solid 1px;
+    margin-bottom: 5px;
+}
+
+.post .user_name {
+    font-weight: 700;
+}
+
+.footer {
+    height: 60px;
+}
+
+.post_adder_div {
+    position: absolute;
+    bottom: 15px;
+    width: calc(100% - 60px);
+    border-top: 1px solid gray;
+    padding: 5px 0;
+}
+
+.post_adder_div textarea{
+    resize: none;
+    width: 100%;
+    font-size: 16px;
+}
+

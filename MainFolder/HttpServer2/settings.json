@@ -1,4 +1,5 @@
 ﻿{
   "Port": 8888,
-  "TemplatesFolder": "Templates"
+  "TemplatesFolder": "Templates",
+  "DBConnectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Films;Integrated Security=True;"
 }

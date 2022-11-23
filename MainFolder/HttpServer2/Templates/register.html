@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Films Project: Регистрация</title>
+        <link href="styles/styles.css" rel="stylesheet" ref="text/css">
+        <link href="styles/background.css" rel="stylesheet" ref="text/css">
+        <script type="text/javascript" src="js/showHide.js"></script>
+    </head>
+    <body class="background-image">
+        <div class="form_div">
+            <div class="card">
+			<form class="card_body" action="/register" method="post">
+				<h2 class="title">Регистрация</h2>
+                    <div class="input_div">
+                        <input class="form_input" type="text" id="login" name="login" required
+                               placeholder="Логин">
+                    </div>
+                    <div class="input_div">
+                        <input class="form_input" type="email" id="email" name="email" required
+                               placeholder="Email">
+                    </div>
+                    <div class="input_div">
+                        <input class="form_input" type="password" id="password" name="password" required
+                               placeholder="Пароль">
+                        <a class="link show_password_icon" onclick="change_password_visibility(this, 'password')"></a>
+                    </div>
+                    <div class="input_div">
+                        <input class="form_input" type="password" id="repeat_password" name="repeat_password" required
+                               placeholder="Повторите пароль">
+                        <a href="#" class="link show_password_icon" onclick="change_password_visibility(this, 'repeat_password')"></a>
+                    </div>
+                    <input type="submit" value="Регистрация" class="submit_btn">
+                    <div class="link_div">
+                        Уже есть аккаунт?
+                        <a class="link" href="C:\Users\Clonediff\Desktop\FilmsProject\login.html">Войти</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
