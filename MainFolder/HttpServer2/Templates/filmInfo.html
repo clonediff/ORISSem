@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Films Project: Фильмы</title>
+    <link href="../styles/styles.css" rel="stylesheet" ref="text/css">
+    <link href="../styles/background.css" rel="stylesheet" ref="text/css">
+    <link href="../styles/header_styles.css" rel="stylesheet" ref="text/css">
+    <link href="../styles/post_styles.css" rel="stylesheet" ref="text/css">
+    <link href="../styles/film_cards_styles.css" rel="stylesheet" ref="text/css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body class="background-image">
+    <div id="header_placer" class="header"></div>
+    <div class="main_content" style="padding-top: 10px">
+        <table style="table-layout:fixed">
+            <thead>
+                <th style="width:14%"></th>
+                <th style="width:43%"></th>
+                <th style="width:43%"></th>
+            </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="6">
+                            <img src="{{Model.Path}}" class="icon" />
+                        </td>
+                        <td colspan="2">
+                            <h2 style="margin:0">{{Model.Name}}</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="weight600">Оригинальное название:</span>
+                            <span>{{Model.OriginalName}}</span>
+                        </td>
+                        <td>
+                            <span class="weight600">Год выпуска:</span>
+                            <span>{{Model.Year}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="weight600">Режиссер:</span>
+                            <span>{{Model.Director}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="weight600">Сценаритсы:</span>
+                            <span>{{Model.ScreenWritersString}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="weight600">Продюсеры:</span>
+                            <span>{{Model.ProducersString}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="weight600">Актёры:</span>
+                            <span>{{Model.ActorsString}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+        <h2 style="margin-top:0">Описание:</h2>
+        <div>{{Model.Description}}</div>
+    </div>
+    <script type="text/javascript" src="../js/addHeader.js"></script>
+</body>
+</html>

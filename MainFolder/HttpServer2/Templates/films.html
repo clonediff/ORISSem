@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Films Project: Фильмы</title>
+    <link href="../styles/styles.css" rel="stylesheet" ref="text/css">
+    <link href="../styles/background.css" rel="stylesheet" ref="text/css">
+    <link href="../styles/header_styles.css" rel="stylesheet" ref="text/css">
+    <link href="../styles/post_styles.css" rel="stylesheet" ref="text/css">
+    <link href="../styles/film_cards_styles.css" rel="stylesheet" ref="text/css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body class="background-image">
+    <div id="header_placer" class="header"></div>
+    <div class="main_content" style="padding-top: 10px">
+        <div>
+        {{for film in Model}}
+            <div class="th-item">
+                <a class="th-in" href="/films/{{film.Id}}">
+                    <div class="img_div">
+                        <img src="{{film.Path}}" class="img"/>
+                    </div>
+                    <div class="film_name">{{film.Name}}</div>
+                    <div class="year_div">{{film.Year}}</div>
+                    <div class="type_div">{{film.Type}}</div>
+                    <div class="hover_overlay"></div>
+                </a>
+            </div>
+        {{end}}
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/addHeader.js"></script>
+</body>
+</html>

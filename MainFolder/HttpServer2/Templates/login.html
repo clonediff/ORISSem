@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>Films Project: Войти</title>
-        <link href="styles/styles.css" rel="stylesheet" ref="text/css">
-        <link href="styles/background.css" rel="stylesheet" ref="text/css">
-        <script type="text/javascript" src="js/showHide.js"></script>
+        <link href="../styles/styles.css" rel="stylesheet" ref="text/css" />
+        <link href="../styles/background.css" rel="stylesheet" ref="text/css" />
+        <link href="../styles/header_styles.css" rel="stylesheet" ref="text/css" />
+        <link href="../styles/form_styles.css" rel="stylesheet" ref="text/css" />
+        <script type="text/javascript" src="../js/showHide.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     </head>
     <body class="background-image">
+        <div id="header_placer" class="header"></div>
         <div class="form_div">
             <div class="card">
-			<form class="card_body" action="/login" method="post">
-				<h2 class="title">Войти</h2>
+                <form class="card_body" action="/login" method="post">
+                    <h2 class="title">Войти</h2>
+                    {{if Model.ErrorFieldName == "total"}}
+                    <span style="color:red">{{Model.ErrorMsg}}</span>
+                    {{end}}
                     <div class="input_div">
                         <input class="form_input" type="text" id="login" name="login" required
-                               placeholder="Логин">
+                               placeholder="Логин" />
+                        {{if Model.ErrorFieldName == "login"}}
+                        <span style="color:red">{{Model.ErrorMsg}}</span>
+                        {{end}}
                     </div>
                     <div class="input_div">
                         <input class="form_input" type="password" id="password" name="password" required
-                               placeholder="Пароль">
+                               placeholder="Пароль" />
+                        {{if Model.ErrorFieldName == "password"}}
+                        <span style="color:red">{{Model.ErrorMsg}}</span>
+                        {{end}}
                         <a class="link show_password_icon" onclick="change_password_visibility(this, 'password')"></a>
                     </div>
                     <div class="input_div">
-                        <input type="checkbox" id="remember_me" name="remember_me">
+                        <input type="checkbox" id="remember_me" name="remember_me" />
                         <label for="remember_me">Запомнить меня</label>
                     </div>
                     <input type="submit" value="Войти" class="submit_btn">
                     <div class="link_div">
                         Нет аккаунта?
-                        <a class="link" href="C:\Users\Clonediff\Desktop\FilmsProject\register.html">Зарегестрироваться</a>
+                        <a class="link" href="/register">Зарегестрироваться</a>
                     </div>
                 </form>
             </div>
         </div>
+        <script type="text/javascript" src="../js/addHeader.js"></script>
     </body>
 </html>

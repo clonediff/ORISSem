@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Films Project: Пост {{Model.Post.Id}}</title>
+        <link href="../styles/styles.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/background.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/header_styles.css" rel="stylesheet" ref="text/css" />
+        <link href="../styles/post_styles.css" rel="stylesheet" ref="text/css" />
+        <link href="../styles/form_styles.css" rel="stylesheet" ref="text/css" />
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body class="background-image">
+        <div id="header_placer" class="header"></div>
+        <div class="main_content">
+            <h2>Просмотр поста</h2>
+            <div class="post">
+                <div class="user_name">{{Model.AuthorName}}</div>
+                <div>{{Model.Post.PostTime}}</div>
+                <div style="white-space: pre; border-bottom: 1px solid gray">{{Model.Post.Content}}</div>
+                <div>Комментарии: {{Model.CommentsCount}}</div>
+                <div id="comments">
+                    {{for comment in Model.Comments}}
+                    <div class="comment">
+                        {{commentInfo = comment.CommentInfo}}
+                        <div>{{comment.AuthorName}}</div>
+                        <div>{{commentInfo.CommentTime}}</div>
+                        <div style="white-space: pre-wrap;">{{commentInfo.Content}}</div>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+            <div class="post_adder_div">
+                <textarea rows="4" id="comment_content" postid="{{Model.Post.Id}}"></textarea>
+                <input type="submit" class="submit_btn" onclick="addComment()" value="Опубликовать">
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/addHeader.js"></script>
+        <script type="text/javascript" src="../js/addPost.js"></script>
+    </body>
+</html>

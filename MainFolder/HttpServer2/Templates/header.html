@@ -1,0 +1,10 @@
+﻿<h2 class="logo_name">Films.org</h2>
+<div class="nav_div">
+    <a href="/">Главная страница</a>
+    <a href="/films">О фильмах</a>
+</div>
+{{if Model == ""}}
+<div class="login_a"><a href="/login">Войти/Зарегестрироваться</a></div>
+{{else}}
+<div class="login_a"><a href="/profile">{{Model}}</a></div>
+{{end}}

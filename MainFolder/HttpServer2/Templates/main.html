@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Films Project</title>
+        <link href="../styles/styles.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/background.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/header_styles.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/post_styles.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/form_styles.css" rel="stylesheet" ref="text/css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body class="background-image">
+        <div id="header_placer" class="header"></div>
+        <div class="main_content">
+            <h2>Посты от наших пользователей</h2>
+            <div id ="posts" class="posts">
+        {{if Model.Count == 0}}
+            <h4 class="nothing">Здесь пока ничего нет, но ты можешь быть первым :)</h4>
+        {{else}}
+            {{for post in Model}}
+            <div class="post" id="post_{{post.Id}}">
+                <div class="user_name">{{post.AuthorName}}</div>
+                <div>{{post.Time}}</div>
+                <div style="white-space: pre-wrap; border-bottom: 1px solid gray;">{{post.Content}}</div>
+                <a href="/post/{{post.Id}}">{{post.CommentsCount}} комментариев</a>
+            </div>
+            {{end}}
+        {{end}}
+            </div>
+            <div class="post_adder_div">
+                <textarea rows="4" id="post_content"></textarea>
+                <input type="submit" class="submit_btn" onclick="addPost()" value="Опубликовать">
+            </div>
+        </div>
+        {{if Model.Count != 0}}
+            <div class="footer"></div>
+        {{end}}
+        <script type="text/javascript" src="../js/addPost.js"></script>
+        <script type="text/javascript" src="../js/addHeader.js"></script>
+    </body>
+</html>

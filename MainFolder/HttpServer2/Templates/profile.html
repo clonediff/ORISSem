@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Films Project: Профиль {{Model.Login}}</title>
+        <link href="../styles/styles.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/background.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/header_styles.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/post_styles.css" rel="stylesheet" ref="text/css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body class="background-image">
+        <div id="header_placer" class="header"></div>
+        <div class="main_content">
+            <h2>Информация о пользователе</h2>
+            <h4>Логин:</h4><span>{{Model.Login}}</span>
+            <h4>Email:</h4><span>{{Model.Email}}</span>
+        </div>
+        <script type="text/javascript" src="../js/addHeader.js"></script>
+    </body>
+</html>

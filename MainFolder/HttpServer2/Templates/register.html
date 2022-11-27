@@ -3,40 +3,58 @@
     <head>
         <meta charset="utf-8">
         <title>Films Project: Регистрация</title>
-        <link href="styles/styles.css" rel="stylesheet" ref="text/css">
-        <link href="styles/background.css" rel="stylesheet" ref="text/css">
-        <script type="text/javascript" src="js/showHide.js"></script>
+        <link href="../styles/styles.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/background.css" rel="stylesheet" ref="text/css">
+        <link href="../styles/header_styles.css" rel="stylesheet" ref="text/css" />
+        <link href="../styles/form_styles.css" rel="stylesheet" ref="text/css" />
+        <script type="text/javascript" src="../js/showHide.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     </head>
     <body class="background-image">
+        <div id="header_placer" class="header"></div>
         <div class="form_div">
             <div class="card">
-			<form class="card_body" action="/register" method="post">
-				<h2 class="title">Регистрация</h2>
+                <form class="card_body" action="/register" method="post">
+                    <h2 class="title">Регистрация</h2>
                     <div class="input_div">
                         <input class="form_input" type="text" id="login" name="login" required
                                placeholder="Логин">
+                        {{if Model.ErrorFieldName == "login"}}
+                        <span style="color:red">{{Model.ErrorMsg}}</span>
+                        {{end}}
                     </div>
                     <div class="input_div">
                         <input class="form_input" type="email" id="email" name="email" required
                                placeholder="Email">
+                        {{if Model.ErrorFieldName == "email"}}
+                        <span style="color:red">{{Model.ErrorMsg}}</span>
+                        {{end}}
                     </div>
                     <div class="input_div">
                         <input class="form_input" type="password" id="password" name="password" required
                                placeholder="Пароль">
+                        {{if Model.ErrorFieldName == "password"}}
+                        <span style="color:red">{{Model.ErrorMsg}}</span>
+                        {{end}}
                         <a class="link show_password_icon" onclick="change_password_visibility(this, 'password')"></a>
                     </div>
                     <div class="input_div">
                         <input class="form_input" type="password" id="repeat_password" name="repeat_password" required
                                placeholder="Повторите пароль">
+                        {{if Model.ErrorFieldName == "repeat_password"}}
+                        <span style="color:red">{{Model.ErrorMsg}}</span>
+                        {{end}}
                         <a href="#" class="link show_password_icon" onclick="change_password_visibility(this, 'repeat_password')"></a>
                     </div>
                     <input type="submit" value="Регистрация" class="submit_btn">
                     <div class="link_div">
                         Уже есть аккаунт?
-                        <a class="link" href="C:\Users\Clonediff\Desktop\FilmsProject\login.html">Войти</a>
+                        <a class="link" href="/login">Войти</a>
                     </div>
                 </form>
             </div>
         </div>
+
+        <script type="text/javascript" src="../js/addHeader.js"></script>
     </body>
 </html>
