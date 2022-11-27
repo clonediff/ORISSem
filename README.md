@@ -2,7 +2,7 @@
 
 ## Перед использованием:
 
-Создайте базу данных MS SQL Server, занесите строку подключения в [settings.json](MainFolder/HttpServer2/settings.json)
+Создайте базу данных MS SQL Server (Параметры сортировки выбрать Cyrilic_General_100_CS_AI), занесите строку подключения в [settings.json](MainFolder/HttpServer2/settings.json)
 
 Выполните все скрипты в папке [DBScripts](DBScripts) в описанном порядке 
 
