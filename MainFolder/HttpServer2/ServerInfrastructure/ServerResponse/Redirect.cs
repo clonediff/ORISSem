@@ -20,7 +20,6 @@ namespace HttpServer2.ServerResponse
         {
             context.Context.Response.RedirectLocation = RedirectUri;
             context.Context.Response.StatusCode = 302;
-            context.Context.Response.OutputStream.Close();
         }
     }
 }

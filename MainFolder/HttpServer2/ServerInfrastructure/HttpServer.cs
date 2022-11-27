@@ -1,5 +1,7 @@
 ﻿using HttpServer2.Attributes;
+using HttpServer2.DAOs;
 using HttpServer2.Routing;
+using HttpServer2.ServerInfrastructure.ServerResponse;
 using System;
 using System.IO;
 using System.Net;
@@ -40,6 +42,7 @@ public class HttpServer : IDisposable
         }
 
         MyORM.Init(_settings.DBConnectionString);
+        SessionDAO.Init(_settings.DBConnectionString);
 
 
         var mainUri = $"http://localhost:{_settings.Port}/";
@@ -90,9 +93,13 @@ public class HttpServer : IDisposable
     {
         try
         {
+            var myContext = new MyContext(context, _settings);
             if (!_responseSender.SendStaticFile(context, _settings) &&
-                !await _handler.HandleController(new MyContext(context, _settings)))
-                NotFound(context, _settings);
+                !await _handler.HandleController(myContext))
+            {
+                new NotFound().ExecuteResult(myContext);
+                context.Response.Close();
+            }
         }
         catch (Exception ex)
         {
@@ -100,21 +107,6 @@ public class HttpServer : IDisposable
             context.Response.StatusCode = 500;
             context.Response.Close();
         }
-    }
-
-    private void NotFound(HttpListenerContext context, ServerSettings settings)
-    {
-        var response = context.Response;
-        
-        byte[] buffer = Encoding.UTF8.GetBytes(Constants.NotFoundPage);
-        response.ContentType = "text/html; charset=UTF-8";
-        response.StatusCode = 404;
-
-        response.ContentLength64 = buffer.Length;
-
-        Stream output = response.OutputStream;
-        output.Write(buffer, 0, buffer.Length);
-        output.Close();
     }
 
     public void Dispose()

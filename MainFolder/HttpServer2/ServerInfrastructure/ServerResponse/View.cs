@@ -6,7 +6,7 @@ namespace HttpServer2.ServerResponse
 {
     public class View : IControllerResult
     {
-        const string DefaultExtension = ".template";
+        const string DefaultExtension = ".html";
 
         string _viewPath;
         object _model;

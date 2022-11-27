@@ -14,7 +14,7 @@ namespace HttpServer2.ServerInfrstructure.ServerResponse
     {
         List<(ICookieValue cookie, TimeSpan expires)> CookiesInfo { get; }
 
-        public CookieResult(List<(ICookieValue cookie, TimeSpan expires)> cookiesInfo)
+        public CookieResult(List<(ICookieValue cookie, TimeSpan expiresIn)> cookiesInfo)
         {
             CookiesInfo = cookiesInfo;
         }
@@ -22,9 +22,9 @@ namespace HttpServer2.ServerInfrstructure.ServerResponse
         public void ExecuteResult(MyContext context)
         {
             var response = context.Context.Response;
-            foreach (var (cookie, expires) in CookiesInfo)
-                if (expires != default)
-                    response.Cookies.Add(cookie.AsCookie(expires));
+            foreach (var (cookie, expiresIn) in CookiesInfo)
+                if (expiresIn != default)
+                    response.Cookies.Add(cookie.AsCookie(expiresIn));
                 else
                     response.Cookies.Add(cookie.AsCookie());
         }

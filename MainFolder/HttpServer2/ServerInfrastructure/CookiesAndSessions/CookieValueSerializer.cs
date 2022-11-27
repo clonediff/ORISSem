@@ -21,6 +21,8 @@ namespace HttpServer2.ServerInfrstructure.CookiesAndSessions
             return $"{{{string.Join(" ", result)}}}";
         }
 
+        public static T Deserialize<T>(string value) => (T)Deserialize(value, typeof(T));
+
         public static object Deserialize(string value, Type type)
         {
             if (value[0] != '{' ||

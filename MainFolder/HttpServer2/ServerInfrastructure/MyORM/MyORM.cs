@@ -1,4 +1,5 @@
-﻿using HttpServer2.Models;
+﻿using HttpServer2.Extensions;
+using HttpServer2.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -72,7 +73,11 @@ namespace HttpServer2
             {
                 connection.Open();
                 var cmd = new SqlCommand(query, connection);
-                affectedRows = await cmd.ExecuteNonQueryAsync();
+                try
+                {
+                    affectedRows = await cmd.ExecuteNonQueryAsync();
+                }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
             }
             return affectedRows;
         }
@@ -82,19 +87,18 @@ namespace HttpServer2
         {
             var properties = typeof(T).GetProperties().Where(x => x.Name != "Id");
             var propertyNamesInTable = properties.Select(x => columnNames[x]);
-            var query = $"INSERT INTO {tableNames[typeof(T)]}\n" +
-                $"VALUES ({string.Join(", ", properties.Select(x => $"'{x.GetValue(obj)}'"))})";
+            var query = $"INSERT INTO {tableNames[typeof(T)]} ({string.Join(", ", propertyNamesInTable)})\n" +
+                $"VALUES ({string.Join(", ", properties.Select(x => x.GetValue(obj).GetSqlStringValue()))})";
 
             return await ExecuteNonQuery(query);
         }
-
         public async Task<int> Update<T>(T obj)
-            where T : notnull, IModel
+            where T : IModel
         {
             var properties = typeof(T).GetProperties().Where(x => x.Name != "Id");
             var propertyNamesInTable = properties.Select(x => columnNames[x]);
             var query = $"UPDATE {tableNames[typeof(T)]}\n" +
-            $"SET {string.Join(", ", properties.Zip(propertyNamesInTable).Select(x => $"{x.Second} = '{x.First.GetValue(obj)}'"))}" +
+            $"SET {string.Join(", ", properties.Zip(propertyNamesInTable).Select(x => $"{x.Second} = {x.First.GetValue(obj).GetSqlStringValue()}"))}\n" +
             $"WHERE Id = {obj.Id}";
 
             return await ExecuteNonQuery(query);
@@ -106,7 +110,7 @@ namespace HttpServer2
             var properties = typeof(T).GetProperties();
             var propertyNamesInTable = properties.Select(x => columnNames[x]);
             var query = $"DELETE FROM {tableNames[typeof(T)]}\n" +
-            $"WHERE {string.Join(" AND ", properties.Zip(propertyNamesInTable).Select(x => $"{x.Second} = '{x.First.GetValue(obj)}'"))}";
+            $"WHERE {string.Join(" AND ", properties.Zip(propertyNamesInTable).Select(x => $"{x.Second} = {x.First.GetValue(obj).GetSqlStringValue()}"))}";
 
             return await ExecuteNonQuery(query);
         }
@@ -130,7 +134,12 @@ namespace HttpServer2
                     {
                         var objT = Activator.CreateInstance(typeof(T));
                         foreach (var property in properties.Zip(propertyNamesInTable))
-                            property.First.SetValue(objT, reader.GetValue(reader.GetOrdinal(property.Second)));
+                        {
+                            var value = reader.GetValue(reader.GetOrdinal(property.Second));
+                            if (value is DBNull)
+                                value = null;
+                            property.First.SetValue(objT, value);
+                        }
                         result.Add((T)objT);
                     }
                 }

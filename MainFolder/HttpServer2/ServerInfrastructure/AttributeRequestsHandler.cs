@@ -1,5 +1,6 @@
 ﻿using HttpServer2.Routing;
 using HttpServer2.Routing.Attributes;
+using HttpServer2.ServerInfrastructure.CookiesAndSessions;
 using HttpServer2.ServerInfrstructure.CookiesAndSessions;
 using HttpServer2.ServerResponse;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace HttpServer2.Attributes
 {
@@ -51,6 +53,8 @@ namespace HttpServer2.Attributes
             var request = context.Context.Request;
             var response = context.Context.Response;
 
+            await ValidateSession(context);
+
             if (!routes.TryNavigate(Enum.Parse<HttpMethod>(request.HttpMethod),
                 request.RawUrl!.Substring(1),
                 request.InputStream, request.ContentEncoding,
@@ -88,6 +92,20 @@ namespace HttpServer2.Attributes
             response.OutputStream.Close();
 
             return true;
+        }
+
+        private async Task ValidateSession(MyContext context)
+        {
+            var request = context.Context.Request;
+            var cookie = request.Cookies[nameof(SessionId)];
+            if (cookie is null)
+                return;
+            var cookieValue = CookieValueSerializer.Deserialize<SessionId>(cookie.Value);
+            if (!await SessionManager.Inst.CheckSession(cookieValue.Id))
+            {
+                context.Context.Request.Cookies.Add(new Cookie { Name = nameof(SessionId), Value = cookie.Value, Expires = DateTime.Now });
+                context.Context.Response.Cookies.Add(new Cookie { Name = nameof(SessionId), Value = cookie.Value, Expires = DateTime.Now });
+            }
         }
 
         private void AddCookieValuesToParameters(MyContext context, MethodInfo method, object[] parameters)

@@ -8,7 +8,6 @@ namespace HttpServer2.ServerResponse
 {
     public class DefaultJsonResult : IControllerResult
     {
-        //static 
         object data;
         public DefaultJsonResult(object data) => this.data = data;
         public void ExecuteResult(MyContext context)

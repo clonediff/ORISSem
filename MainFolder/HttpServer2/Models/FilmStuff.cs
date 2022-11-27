@@ -11,7 +11,14 @@ namespace HttpServer2.Models
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
         public string? MiddleName { get; set; }
+
+        public override string ToString()
+        {
+            return string.Join(" ", 
+                string.Join(" ", FirstName, MiddleName, LastName)
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries));
+        }
     }
 }

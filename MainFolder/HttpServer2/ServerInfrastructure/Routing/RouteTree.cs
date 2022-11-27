@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace HttpServer2.Routing
 {
@@ -45,8 +46,8 @@ namespace HttpServer2.Routing
 
         private Node root = new("");
 
-        private static string plainSegmentRegex = @"([a-z]+)";
-        private static string argSegmentRegex = @"({[a-z]+})";
+        private static string plainSegmentRegex = @"([a-zA-Z]+)";
+        private static string argSegmentRegex = @"({[a-zA-Z]+})";
         private static string notEmptySegment = $"({plainSegmentRegex}|{argSegmentRegex})";
         private bool IsPlainSegment(string route)
             => Regex.IsMatch(route, $"^{plainSegmentRegex}$");
@@ -59,7 +60,6 @@ namespace HttpServer2.Routing
         public void AddRoute(HttpMethod methodType, string route, MethodInfo method,
             Dictionary<string, (int index, Type type)> methodArgumentNamesToOrderIndex = null!)
         {
-            route = route.ToLower();
             if (!IsCorrectRoute(route))
                 throw new ArgumentException($"Неправильно задан маршрут: {route}");
 
@@ -86,11 +86,12 @@ namespace HttpServer2.Routing
                     }
                     else if (IsPlainSegment(segment))
                     {
-                        node = new(segment);
-                        if (!curNode.PlainSubRoutes.ContainsKey(segment))
-                            curNode.PlainSubRoutes[segment] = node;
+                        var lowerSegment = segment.ToLower();
+                        node = new(lowerSegment);
+                        if (!curNode.PlainSubRoutes.ContainsKey(lowerSegment))
+                            curNode.PlainSubRoutes[lowerSegment] = node;
 
-                        curNode = curNode.PlainSubRoutes[segment];
+                        curNode = curNode.PlainSubRoutes[lowerSegment];
                     }
                     else
                         throw new Exception("Переделай регулярку она глючная!!!");
@@ -116,8 +117,9 @@ namespace HttpServer2.Routing
             var parameters = method.GetParameters();
             var result = new object[parameters.Length]; 
 
-            var inputStreamstring = inputStream.ReadToEnd();
-            var fromInputStreamNameToValue = ParseAsQuery(inputStreamstring);
+            var inputStreamString = inputStream.ReadToEnd();
+            var decodedString = HttpUtility.UrlDecode(inputStreamString);
+            var fromInputStreamNameToValue = ParseAsQuery(decodedString);
 
             var fromQueryStringNameToValue = ParseAsQuery(queryString);
 
@@ -133,6 +135,14 @@ namespace HttpServer2.Routing
                     value = obj;
                 try
                 {
+                    if (parameters[i].ParameterType == typeof(bool))
+                    {
+                        value = value?.ToString()?.ToLower() switch
+                        {
+                            "true" or "on" or "1" => true,
+                            "false" or "off" or "0" or null => false
+                        };
+                    }
                     result[i] = Convert.ChangeType(value, parameters[i].ParameterType);
                 }
                 catch

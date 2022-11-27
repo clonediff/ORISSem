@@ -18,6 +18,9 @@ namespace HttpServer2.Models
         public int Id { get; set; }
         public FilmType Type { get; set; }
         public string Name { get; set;  }
+        public string OriginalName { get; set; }
         public int Year { get; set; }
+        public string Path { get; set; }
+        public string Description { get; set; }
     }
 }
