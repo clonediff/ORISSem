@@ -68,7 +68,7 @@ namespace HttpServer2.Controllers
                 (c, a) => (c, Name: a.GetAuthorName(c.AuthorId)))
                 .Select(x => new { AuthorName = x.Name, CommentInfo = x.c });
 
-            return new View("postViewer.html", 
+            return new View("postViewer", 
                 new { Post = post, 
                     AuthorName = authorName, 
                     CommentsCount = preparedComments.Count(), 

@@ -22,7 +22,7 @@
     <None Update="settings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\commentTemplate.html">
+    <None Update="Templates\commentTemplate.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\filmIcons\DoctorStrangeMultiversOfMadness.jpg">
@@ -31,13 +31,13 @@
     <None Update="Templates\filmIcons\SpiderManNoWayHome.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\filmInfo.html">
+    <None Update="Templates\filmInfo.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\films.html">
+    <None Update="Templates\films.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\header.html">
+    <None Update="Templates\header.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\images\backgorund.jpg">
@@ -61,22 +61,22 @@
     <None Update="Templates\js\showHide.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\login.html">
+    <None Update="Templates\login.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\main.html">
+    <None Update="Templates\main.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\postTemplate.html">
+    <None Update="Templates\postTemplate.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\postViewer.html">
+    <None Update="Templates\postViewer.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\profile.html">
+    <None Update="Templates\profile.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\register.html">
+    <None Update="Templates\register.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\styles\background.css">

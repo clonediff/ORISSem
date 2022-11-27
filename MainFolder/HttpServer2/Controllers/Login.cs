@@ -25,7 +25,7 @@ namespace HttpServer2.Controllers
         {
             if (sessionId != default)
                 return new Redirect("/profile");
-            return new View("login.html", new LoginRegisterResultDto());
+            return new View("login", new LoginRegisterResultDto());
         }
 
         [HttpPOST("/")]
